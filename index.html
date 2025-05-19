@@ -1,1 +1,336 @@
-index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Security CTF - Coming Soon</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="noise"></div>
+    <div class="overlay"></div>
+    <div class="terminal">
+        <div class="terminal-header">
+            <div class="terminal-buttons">
+                <span class="terminal-button red"></span>
+                <span class="terminal-button yellow"></span>
+                <span class="terminal-button green"></span>
+            </div>
+            <div class="terminal-title">[ CTF_SERVER_TERMINAL ]</div>
+        </div>
+        
+        <div class="terminal-content">
+            <div class="glitch-container">
+                <h1 class="glitch" data-text="COMING SOON">COMING SOON</h1>
+            </div>
+            
+            <div class="countdown-container">
+                <div id="countdown">
+                    <div class="countdown-item">
+                        <span id="days">--</span>
+                        <span class="countdown-label">DAYS</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span id="hours">--</span>
+                        <span class="countdown-label">HOURS</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span id="minutes">--</span>
+                        <span class="countdown-label">MINUTES</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span id="seconds">--</span>
+                        <span class="countdown-label">SECONDS</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="terminal-text">
+                <div class="typing-text" id="typing-text"></div>
+                <div class="cursor"></div>
+            </div>
+            
+            <div class="project-info">
+                <div class="info-item">
+                    <i class="fas fa-calendar"></i>
+                    <span>Started: May 20, 2025</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-code-branch"></i>
+                    <span>Status: In Development</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Project: Capture The Flag</span>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <a href="https://tsecnetwork.my.id" class="glow-button" target="_blank">
+                    <span class="button-content">
+                        <i class="fas fa-users"></i>
+                        VISIT COMMUNITY
+                    </span>
+                </a>
+                <button class="glow-button" id="notify-btn">
+                    <span class="button-content">
+                        <i class="fas fa-bell"></i>
+                        NOTIFY ME
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="particles-container" id="particles"></div>
+    
+    <div class="modal" id="notify-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-terminal"></i> Subscribe for Updates</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="notify-form">
+                    <div class="form-group">
+                        <label for="email">Email Address:</label>
+                        <input type="email" id="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="handle">Hacker Handle:</label>
+                        <input type="text" id="handle" placeholder="Your hacker name" required>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        <span>SUBSCRIBE</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="floating-elements">
+        <div class="floating-icon" style="--delay: 2s; --duration: 15s">
+            <i class="fas fa-bug"></i>
+        </div>
+        <div class="floating-icon" style="--delay: 5s; --duration: 18s">
+            <i class="fas fa-lock"></i>
+        </div>
+        <div class="floating-icon" style="--delay: 1s; --duration: 20s">
+            <i class="fas fa-key"></i>
+        </div>
+        <div class="floating-icon" style="--delay: 7s; --duration: 22s">
+            <i class="fas fa-code"></i>
+        </div>
+        <div class="floating-icon" style="--delay: 3s; --duration: 17s">
+            <i class="fas fa-server"></i>
+        </div>
+    </div>
+
+    <script>
+        // Set the launch date (May 20, 2025 plus some additional time)
+        const launchDate = new Date('June 20, 2025 00:00:00').getTime();
+        
+        // Update the countdown every second
+        const countdownInterval = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = launchDate - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').innerText = days.toString().padStart(2, '0');
+            document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
+            
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                document.getElementById('countdown').innerHTML = '<div class="launched">CTF IS LIVE!</div>';
+            }
+        }, 1000);
+        
+        // Typing effect
+        const text = [
+            "Initializing secure environment...",
+            "Loading CTF challenges...",
+            "Securing the perimeter...",
+            "Preparing cryptographic puzzles...",
+            "Setting up network security tests...",
+            "Challenge development in progress...",
+            "Starting from May 20, 2025",
+            "Are you ready to test your skills?",
+            "System will be operational soon."
+        ];
+        
+        let textIndex = 0;
+        let charIndex = 0;
+        const typingElement = document.getElementById('typing-text');
+        
+        function typeWriter() {
+            if (charIndex < text[textIndex].length) {
+                typingElement.innerHTML += text[textIndex].charAt(charIndex);
+                charIndex++;
+                setTimeout(typeWriter, 50);
+            } else {
+                setTimeout(eraseText, 2000);
+            }
+        }
+        
+        function eraseText() {
+            if (charIndex > 0) {
+                typingElement.innerHTML = text[textIndex].substring(0, charIndex - 1);
+                charIndex--;
+                setTimeout(eraseText, 25);
+            } else {
+                textIndex = (textIndex + 1) % text.length;
+                setTimeout(typeWriter, 500);
+            }
+        }
+        
+        // Start the typing animation
+        typeWriter();
+        
+        // Create floating binary code in background
+        const particles = document.getElementById('particles');
+        
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            
+            // Random binary digit (0 or 1)
+            particle.innerText = Math.random() > 0.5 ? '0' : '1';
+            
+            // Random position
+            const posX = Math.random() * window.innerWidth;
+            const posY = -50; // Start above the viewport
+            
+            // Random size and opacity
+            const size = Math.random() * 16 + 8;
+            const opacity = Math.random() * 0.5 + 0.1;
+            
+            // Apply styles
+            particle.style.left = `${posX}px`;
+            particle.style.top = `${posY}px`;
+            particle.style.fontSize = `${size}px`;
+            particle.style.opacity = opacity;
+            
+            // Add to DOM
+            particles.appendChild(particle);
+            
+            // Animate
+            const duration = Math.random() * 10 + 5;
+            particle.style.animation = `fall ${duration}s linear forwards`;
+            
+            // Remove after animation
+            setTimeout(() => {
+                particle.remove();
+            }, duration * 1000);
+        }
+        
+        // Create particles at intervals
+        setInterval(createParticle, 100);
+        
+        // Modal functionality
+        const modal = document.getElementById('notify-modal');
+        const notifyBtn = document.getElementById('notify-btn');
+        const closeBtn = document.querySelector('.close-modal');
+        const form = document.getElementById('notify-form');
+        
+        notifyBtn.addEventListener('click', () => {
+            modal.classList.add('open');
+            // Add glitch effect to background when modal is open
+            document.body.classList.add('modal-open');
+        });
+        
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('open');
+            document.body.classList.remove('modal-open');
+        });
+        
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('open');
+                document.body.classList.remove('modal-open');
+            }
+        });
+        
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Simulate form submission with "hacking" effect
+            const submitBtn = document.querySelector('.submit-btn');
+            submitBtn.innerHTML = '<span>PROCESSING...</span>';
+            
+            setTimeout(() => {
+                submitBtn.innerHTML = '<span>ACCESS GRANTED</span>';
+                submitBtn.classList.add('success');
+                
+                // Reset and close form after delay
+                setTimeout(() => {
+                    form.reset();
+                    modal.classList.remove('open');
+                    document.body.classList.remove('modal-open');
+                    submitBtn.innerHTML = '<span>SUBSCRIBE</span>';
+                    submitBtn.classList.remove('success');
+                }, 2000);
+            }, 1500);
+        });
+        
+        // Add some random "hacking" events
+        function randomHackingEffect() {
+            const terminal = document.querySelector('.terminal-content');
+            terminal.classList.add('glitch-effect');
+            
+            setTimeout(() => {
+                terminal.classList.remove('glitch-effect');
+            }, 200);
+        }
+        
+        setInterval(randomHackingEffect, Math.random() * 10000 + 5000);
+        
+        // Easter egg: Konami code to reveal a hidden message
+        const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+        let konamiIndex = 0;
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === konamiCode[konamiIndex]) {
+                konamiIndex++;
+                
+                if (konamiIndex === konamiCode.length) {
+                    // Create hidden message element
+                    const hiddenMessage = document.createElement('div');
+                    hiddenMessage.classList.add('hidden-message');
+                    hiddenMessage.innerHTML = `
+                        <div class="message-content">
+                            <h3>CONGRATULATIONS HACKER!</h3>
+                            <p>You've found your first flag:</p>
+                            <div class="flag">FLAG{k0n4m1_c0d3_m4st3r}</div>
+                            <p>Keep this secret. More challenges await.</p>
+                        </div>
+                    `;
+                    
+                    document.body.appendChild(hiddenMessage);
+                    
+                    setTimeout(() => {
+                        hiddenMessage.classList.add('show');
+                    }, 100);
+                    
+                    setTimeout(() => {
+                        hiddenMessage.classList.remove('show');
+                        setTimeout(() => {
+                            hiddenMessage.remove();
+                        }, 500);
+                    }, 5000);
+                    
+                    konamiIndex = 0;
+                }
+            } else {
+                konamiIndex = 0;
+            }
+        });
+    </script>
+</body>
+</html>
